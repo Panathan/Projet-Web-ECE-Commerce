@@ -1,31 +1,31 @@
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "", "myDB");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
- 
-// Escape user inputs for security
-$firstname = mysqli_real_escape_string($link, $_POST['firstname']);
-$lastname = mysqli_real_escape_string($link, $_POST['lastname']);
-$email = mysqli_real_escape_string($link, $_POST['email']);
-$postal = mysqli_real_escape_string($link, $_POST['postal']);
-$mobile = mysqli_real_escape_string($link, $_POST['mobile']);
-$adresse=mysqli_real_escape_string($link,$_POST['address']); 
-$city=mysqli_real_escape_string($link,$_POST['city']); 
-$password=mysqli_real_escape_string($link,$_POST['password']); 
-// attempt insert query execution
-$sql = "INSERT INTO ece_amazon (firstname,lastname,email,city,mobile,password,address,city,postal) VALUES ('$firstname','$lastname', '$email', '$city','$mobile',$password','$address','$city','$postal')";
-if(mysqli_query($link, $sql)){
-    echo "Inscription réussie";
-} else{
-    echo "ERREUR: Impossible d'exécuter $sql. " . mysqli_error($link);
-}
- header('Location: home.html');
-exit();
 
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membres', 'root', '');
+
+
+	$lastname = htmlspecialchars($_POST['lastname']);
+	$firstname = htmlspecialchars($_POST['firstname']);
+	$email = htmlspecialchars($_POST['email']);
+	$pwd = sha1($_POST['pwd']);
+	$mobile = htmlspecialchars($_POST['mobile']);
+	$address = htmlspecialchars($_POST['address']);
+	$city = htmlspecialchars($_POST['city']);
+	$postal = htmlspecialchars($_POST['postal']);
+
+	if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
+	{
+        $reqmail = $bdd->prepare("SELECT * FROM membre WHERE Email = ?");
+        $reqmail->execute(array($email));
+        $mailexist = $reqmail->rowCount();
+        if($mailexist == 0) 
+        {
+            $insertmbr = $bdd->prepare("INSERT INTO membre(Nom, Prenom, Email, Motdepasse, Telephone, Adresse, Ville, CodePostal) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+			$insertmbr->execute(array($lastname, $firstname, $email, $pwd, $mobile, $address, $city, $postal));
+			echo("Votre compte a bien été créé ! <a href=\"home.html\">Retourner à la page d'accueil</a>");
+        }
+        else 
+        {
+            echo("Adresse mail déjà utilisée ! <a href=\"userRegistration.html\">Retourner à la page inscription</a>") ;
+        }
+	}
 ?>
- 
