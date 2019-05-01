@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Page de connexion</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="style.css" rel="stylesheet" type="text/css">
+  <script>
+		var app = angular.module('myApp', []);
+	app.controller('validateCtrl', function($scope) {
+	$scope.onlyNumbers = /^\d+$/;
+	$scope.emailPattern=/^([a-zA-Z])+([a-zA-Z.])+@(edu)+\.(ece)+\.(fr)$/;
+	$scope.passwordPattern=/^[a-zA-Z0-9@!#&$]*$/;
+	});
+	app.directive('formatPhone', [
+        function() {
+            return {
+                require: 'ngModel',
+                restrict: 'A',
+                link: function(scope, elem, attrs, ctrl, ngModel) {
+                    elem.add(mobile).on('keyup', function() {
+                       var origVal = elem.val().replace(/[^\w\s]/gi, '');
+                       if(origVal.length === 10) {
+                         var str = origVal.replace(/(.{3})/g,"$1-");
+                         var phone = str.slice(0, -2) + str.slice(-1);
+                         jQuery("#mobile").val(phone);
+                       }
+
+                    });
+                }
+            };
+        }
+    ]);	
+</script>
+  <style>
+    footer {
+      background-color: black;
+      padding: 25px;
+    }
+}
+footer div {
+color:#C50000;
+}
+#contactForm label{
+
+color:darkblue;
+}
+#contactForm{
+	border:2px solid black;
+	background-color:white;
+
+
+}
+#contactForm h2{
+
+text-align:center;
+text-shadow:2px 2px 2px;
+}
+footer{
+bottom:0px;
+background-color:#F5F5DC;
+border-top:2px;
+}
+
+form{
+
+padding:25px;
+
+}
+
+
+  </style>
+</head>
+
+<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="home.html" style="color:#ccc"><span class="logo"><img src="logo.png" width="30" height="30"></span>ECE Amazon</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#" style="color:#ccc">Accueil</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#ccc">Livres <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sous type 1</a></li>
+								<li><a href="#">Sous type 2</a></li>
+								<li><a href="#">Sous type 3</a></li>
+							</ul>
+						</li>
+						<li><a href="#" style="color:#ccc">Musique</a></li>
+						<li><a href="#" style="color:#ccc">Vêtements</a></li>
+						<li><a href="#" style="color:#ccc">Sports et loisirs</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="userRegistration.html" style="color:#ccc"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+						<li><a href="loginpage.html" style="color:#ccc"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+<div class="container" id="contactForm" name="contactForm">
+<h2>Bienvenue</h2>
+<h2>Page de connexion</h2>
+	<form class="form-inline" ng-app="myApp" ng-controller="validateCtrl" name="myForm" action="loginValid.php" method="POST" novalidate>
+			
+
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Email ID :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
+				<input type="text" placeholder="Votre email" name="email" ng-model="email" ng-pattern="emailPattern" required>
+				<br>	
+				<span ng-show="myForm.email.$pristine">Exemple:prenom.nom@edu.ece.fr</span>
+				<span style="color:red" ng-show="myForm.email.$dirty ">
+					<span ng-show="myForm.email.$error.required">L'email est requis.</span>
+					<span class="error" ng-show="myForm.email.$error.pattern">Email non valide.</span>
+				</span>
+				<span class="text-success" ng-show="myForm.email.$dirty && myForm.email.$valid">Email correct.</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Mot de passe :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
+				<input type="password" placeholder="Votre mot de passe" name="pwd" ng-model="pwd" ng-pattern="passwordPattern" ng-maxlength="25" ng-minlength="2" ng-pattern-restrict required>
+				<br>	
+				<span ng-show="myForm.pwd.$pristine">Exemple:MotDePasse</span>
+				<span style="color:red" ng-show="myForm.pwd.$dirty ">
+					<span ng-show="myForm.pwd.$error.required">Le mot de passe est requis.</span>
+					<span class="error" ng-show="myForm.pwd.$error.pattern">Mot de passe non valide.</span>
+					<span class="error" ng-show="myForm.pwd.$error.maxlength">Votre mot de passe ne doit pas dépasser 25 lettres.</span>
+					<span ng-show="myForm.pwd.$error.minlength">Votre mot de passe ne peut pas contenir moins de 2 lettres.</span>
+
+				</span>
+				<span class="text-success" ng-show="myForm.pwd.$dirty && myForm.pwd.$valid"></span>
+				</div>
+			</div>
+			<br />
+			<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+				<input type="submit" value="Connexion"
+					ng-disabled="(myForm.email.$pristine || myForm.pwd.$pristine) || (myForm.pwd.$dirty && myForm.pwd.$invalid )||  
+						(myForm.email.$dirty && myForm.email.$invalid)">
+
+			</div>
+			</div>
+			</form>
+
+</div>
+<footer class="container-fluid text-center ">
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-sm-4">
+				
+			</div>
+			<div class="col-sm-4">
+			Pas encore de compte ? Créez en un nouveau ! 
+			<a href="userRegistration.html">S'inscrire.</a><br>
+			Retourner à la
+			<a href="home.html"> page d'accueil</a>
+			<br><br>ECE Amazon<br>
+			37, quai de Grenelle<br>
+			Paris 75015.
+			</div>
+		</div>
+	</div>
+</footer>
+</body>
+</html>
