@@ -3,165 +3,192 @@
 	<head>
 		<title>ECE Amazon</title>
 		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1" name="viewport">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<link href="style.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript">
-		$(document).ready(function(){
-					$('.header').height($(window).height());
-					});
-		</script>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-md">
-			<a class="navbar-brand" href="#">
-				Logo
-			</a>
-			<button class="navbar-toggler navbar-dark" data-target="#main-navigation" datatoggle="collapse" type="button">
-			<span class="navbar-toggler-icon">
-			</span>
-			</button>
-			<div class="collapse navbar-collapse" id="main-navigation">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							Accueil
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							Livres
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							Musiques
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							Vêtements
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							Sports et loisirs
-						</a>
-					</li>
-				</ul>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="home.html" style="color:#ccc"><span class="logo"><img src="logo.png" width="30" height="30"></span>ECE Amazon</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#" style="color:#ccc">Accueil</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#ccc">Livres <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sous type 1</a></li>
+								<li><a href="#">Sous type 2</a></li>
+								<li><a href="#">Sous type 3</a></li>
+							</ul>
+						</li>
+						<li><a href="#" style="color:#ccc">Musique</a></li>
+						<li><a href="#" style="color:#ccc">Vêtements</a></li>
+						<li><a href="#" style="color:#ccc">Sports et loisirs</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" style="color:#ccc"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+						<li><a href="#" style="color:#ccc"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+					</ul>
+				</div>
 			</div>
 		</nav>
-		<!--<header class="page-header header container-fluid">
-			<div class="overlay">
-			</div>
-			<div class="description">
-				<h1>
-				Bienvenue à la page de votre destination!
-				</h1>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien
-					rutrum, id vulputate quam iaculis. Suspendisse consectetur mi id libero fringilla, in
-					pharetra sem ullamcorper.
-				</p>
-				<button class="btn btn-outline-secondary btn-lg">
-				Dites m'en
-				plus!
-				</button>
-			</div>
-		</header>
-		<div class="container features">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<h3 class="feature-title">
-					Lorem ipsum
-					</h3>
-					<img class="img-fluid" src="column1.jpg">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing
-						elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien
-						rutrum, id vulputate quam iaculis.
-					</p>
-					</img>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<h3 class="feature-title">
-					Lorem ipsum
-					</h3>
-					<img class="img-fluid" src="column2.jpg">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing
-						elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien
-						rutrum, id vulputate quam iaculis.
-					</p>
-					</img>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12">
-					<h3 class="feature-title">
-					Entrer en contact!
-					</h3>
-					<div class="form-group">
-						<input class="form-control" name="" placeholder="Votre nom:" type="text">
-						</input>
-					</div>
-					<div class="form-group">
-						<input class="form-control" name="email" placeholder="Courriel:" type="email">
-						</input>
-					</div>
-					<div class="form-group">
-						<textarea class="form-control" rows="4">
-						Vos
-						commentaires
-						</textarea>
-					</div>
-					<input class="btn btn-secondary btn-block" name="" type="submit" value="Envoyer">
-					</input>
-				</div>
-			</div>
+		<!--<div class="container">
+											<h3>Collapsible Navbar</h3>
+											<p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
+																				<br>
+											Only when the button is clicked, the navigation bar will be displayed.</p>
 		</div>-->
-		<footer class="page-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-md-8 col-sm-12">
-						<h6 class="text-uppercase font-weight-bold">
-						Information
-						additionnelle
-						</h6>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet
-							dolor id sapien rutrum, id vulputate quam iaculis.
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet
-							dolor id sapien rutrum, id vulputate quam iaculis.
-						</p>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+							<li data-target="#myCarousel" data-slide-to="3"></li>
+						</ol>
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<img src="test.png" alt="image1" name="image1">
+								<div class="carousel-caption">
+									<h3>Bedding</h3>
+									<p>We sell bedframes</p>
+								</div>
+							</div>
+							<div class="item">
+								<img src="test.png" alt="image2" name="image2">
+								<div class="carousel-caption">
+									<h3>Chairs</h3>
+									<p>Desk chairs.......</p>
+								</div>
+							</div>
+							<div class="item">
+								<img src="test.png" alt="image3" name="image3">
+								<div class="carousel-caption">
+									<h3>Kitchen ware</h3>
+									<p>Everything that suits your kitchen</p>
+								</div>
+							</div>
+							<div class="item">
+								<img src="test.png" alt="image4" name="image4">
+								<div class="carousel-caption">
+									<h3>More stuff</h3>
+									<p>All that a student needs</p>
+								</div>
+							</div>
+						</div>
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
 					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12">
-						<h6 class="text-uppercase font-weightbold">
-						Contact
-						</h6>
-						<p>
-							37, quai de Grenelle, 75015 Paris, France
-							<br>
-							info@webDynamique.ece.fr
-							<br>
-							+33 01 02 03 04 05
-							<br>
-							+33 01 03 02 05 04
-							</br>
-							</br>
-							</br>
-						</p>
-					</div>
-				</div>
-				<div class="footer-copyright text-center">
-					© 2019 Copyright | Droit d'auteur: BOUTAKHOT Jonathan, DO BARREIRO Jordan, RIVES Raphaël
 				</div>
 			</div>
-		</footer>
-	</body>
+		</div>
+		<div class="container text-center">
+			<h3>Best Sellers</h3>
+			<br>
+			<div class="panel panel-primary" id="best-sellers">
+				<div class="panel-heading">Meilleures ventes cette semaine</div>
+				<div class="panel-body">
+					<div class="row" id="bestsellers">
+						<div class="col-sm-2" >
+							<img src="test2.jpg" class="img-responsive" style="width:100%" alt="Image">
+							<p id="go">
+								<a href="#" class="btn btn-primary" >View </a>
+							</p>
+						</div>
+						<div class="col-sm-2">
+							<img src="test2.jpg" class="img-responsive" style="width:100%" alt="Image">
+							<p id="go">
+								<a href="#" class="btn btn-primary" >View </a>
+							</p>
+							
+						</div>
+						<div class="col-sm-2">
+							<img src="test2.jpg" class="img-responsive" style="width:100%" alt="Image">
+							<p id="go">
+								<a href="#" class="btn btn-primary" >View </a>
+							</p>
+						</div>
+						<div class="col-sm-2">
+							<img src="test2.jpg" class="img-responsive" style="width:100%" alt="Image">
+							<p id="go">
+								<a href="#" class="btn btn-primary" >View </a>
+							</p>
+						</div>
+						<div class="col-sm-2">
+							<img src="test2.jpg" class="img-responsive" style="width:100%" alt="Image">
+							<p id="go">
+								<a href="#" class="btn btn-primary" >View </a>
+							</p>
+						</div>
+						<div class="col-sm-2">
+							<img src="test2.jpg" class="img-responsive" style="width:100%" alt="Image">
+							<p id="go">
+								<a href="#" class="btn btn-primary" >View </a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-12">
+					<h6 class="text-uppercase font-weight-bold">
+					Information additionnelle
+					</h6>
+					<p>
+						gfsdgsdfhfdsth
+					</p>
+					<p>
+						dgsdgdsgdsf
+					</p>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12">
+					<h6 class="text-uppercase font-weightbold">
+					Contact
+					</h6>
+					<p>
+						37, quai de Grenelle, 75015 Paris, France
+						<br>
+						jonathan.boutakhot@edu.ece.fr
+						<br>
+						jordan.do-barreiro@edu.ece.fr
+						<br>
+						raphael.rives@edu.ece.fr
+						</br>
+						</br>
+						</br>
+					</p>
+				</div>
+			</div>
+			<div class="footer-copyright text-center">
+				© 2019 Copyright | Droit d'auteur: BOUTAKHOT Jonathan, DO BARREIRO Jordan, RIVES Raphaël
+			</div>
+		</div>
+	</footer>
+</body>
 </html>
