@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Inscription nouvel utilisateur</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+		var app = angular.module('myApp', []);
+	app.controller('validateCtrl', function($scope) {
+	$scope.onlyNumbers = /^\d+$/;
+	$scope.emailPattern=/^([a-zA-Z])+([a-zA-Z.])+@(edu)+\.(ece)+\.(fr)$/
+	});
+	app.directive('formatPhone', [
+        function() {
+            return {
+                require: 'ngModel',
+                restrict: 'A',
+                link: function(scope, elem, attrs, ctrl, ngModel) {
+                    elem.add(mobile).on('keyup', function() {
+                       var origVal = elem.val().replace(/[^\w\s]/gi, '');
+                       if(origVal.length === 10) {
+                         var str = origVal.replace(/(.{3})/g,"$1-");
+                         var phone = str.slice(0, -2) + str.slice(-1);
+                         jQuery("#mobile").val(phone);
+                       }
+
+                    });
+                }
+            };
+        }
+    ]);
+</script>
+
+
+  <style>
+    footer {
+      background-color: black;
+      padding: 25px;
+    }
+    
+footer div {
+color:#C50000;
+}
+#contactForm label{
+
+color:darkblue;
+}
+#contactForm{
+	border:1px solid black;
+	background-color:white;
+}
+#contactForm h2{
+
+text-align:center;
+text-shadow:2px 2px 2px;
+}
+
+footer{
+bottom:0px;
+background-color:white;
+border-top:2px;
+}
+
+form{
+padding:25px;
+}
+
+</style>
+</head>
+
+<div class="container" id="contactForm" name="contactForm">
+<h2>Bienvenue nouvel utilisateur</h2>
+<h2>Formulaire d'inscription</h2>
+	<form class="form-inline" ng-app="myApp" ng-controller="validateCtrl" name="myForm" action="inscription.php" method="post" novalidate>
+			
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Nom :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="lastname" name="lastname" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<br>
+					<span ng-show="myForm.lastname.$pristine">Entrez votre nom en lettres alphabétiques.</span>
+					<span style="color:red" ng-show="myForm.lastname.$dirty">
+						<span ng-show="myForm.lastname.$error.required">Le nom est requis.</span>
+						<span ng-show="myForm.lastname.$error.pattern">Le nom ne peut pas contenir de chiffres.</span>
+						<span ng-show="myForm.lastname.$error.maxlength">Votre nom ne peut pas dépasser 25 lettres.</span>
+						<span ng-show="myForm.lastname.$error.minlength">Votre nom doit contenir au moins 2 lettres.</span>
+					</span>
+					<span class="text-success" ng-show="myForm.lastname.$dirty && myForm.lastname.$valid && !myForm.lastname.$error.minlength && !myForm.lastname.$error.maxlength">Nom correct.</span>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Prénom :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="firstname" name="firstname" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<br>
+					<span ng-show="myForm.firstname.$pristine">Entrez votre prénom en lettres alphabétiques.</span>
+					<span style="color:red" ng-show="myForm.firstname.$dirty">
+						<span ng-show="myForm.firstname.$error.required">Le prénom est requis.</span>
+						<span ng-show="myForm.firstname.$error.pattern">Le prénom ne peut pas contenir de chiffres.</span>
+						<span ng-show="myForm.firstname.$error.maxlength">Votre prénom ne peut pas dépasser 25 lettres.</span>
+						<span ng-show="myForm.firstname.$error.minlength">Votre prénom doit contenir au moins 2 lettres.</span>
+					</span>
+					<span class="text-success" ng-show="myForm.firstname.$dirty && myForm.firstname.$valid && !myForm.firstname.$error.minlength && !myForm.firstname.$error.maxlength">Prénom correct.</span>
+					
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Email :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
+				<input type="text" name="email" ng-model="email" ng-pattern="emailPattern" required>
+				<br>	
+				<span ng-show="myForm.email.$pristine">Exemple:prenom.nom@edu.ece.fr</span>
+				<span style="color:red" ng-show="myForm.email.$dirty ">
+					<span ng-show="myForm.email.$error.required">L'email est nécessaire.</span>
+					<span class="error" ng-show="myForm.email.$error.pattern">L'email saisi est incorrect</span>
+				</span>
+				<span class="text-success" ng-show="myForm.email.$dirty && myForm.email.$valid">Email correct.</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Mot de passe :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="password" name="password" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<br>
+					<span ng-show="myForm.password.$pristine">Entrez votre mot de passe.</span>
+					<span style="color:red" ng-show="myForm.password.$dirty">
+						<span ng-show="myForm.password.$error.required">Le mot de passe est requis.</span>
+						<span ng-show="myForm.password.$error.maxlength">Votre mot de passe ne peut pas dépasser 25 lettres.</span>
+						<span ng-show="myForm.password.$error.minlength">Votre mot de passe doit contenir au moins 2 lettres.</span>
+					</span>
+					<span class="text-success" ng-show="myForm.password.$dirty && !myForm.password.$error.minlength && !myForm.password.$error.maxlength">Mot de passe correct.</span>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Numéro de téléphone :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+				<input type="text" name="mobile" ng-model="mobile" ng-pattern="onlyNumbers" ng-maxlength="10" ng-minlength="10" required format-phone id="mobile">
+				<br>	
+				<span ng-show="myForm.mobile.$pristine">Exemple:0654321234</span>
+				<span style="color:red" ng-show="myForm.mobile.$dirty ">
+					<span class="error" ng-show="myForm.mobile.$error.required">Le numéro de téléphone est requis.</span>
+					<span class="error" ng-show="myForm.mobile.$error.pattern">Le numéro de téléphone est invalide.</span>
+					<span class="error" ng-show="myForm.mobile.$error.maxlength">Le numéro de téléphone doit contenir 10 chiffres.</span>
+					<span ng-show="myForm.mobile.$error.minlength">Le numéro de téléphone ne peut pas contenir moins de 10 chiffres.</span>
+					
+					
+				</span>
+				<span class="text-success" ng-show="myForm.mobile.$dirty && myForm.mobile.$valid && !myForm.mobile.$error.minlength && !myForm.mobile.$error.maxlength">Numéro de téléphone correct.</span>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Adresse :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+					<textarea ng-pattern ="/^[a-zA-Z0-9#\s]*$/" ng-model="address" name="address"   ng-pattern-restrict required></textarea>
+					<br>
+					<span ng-show="myForm.address.$pristine">Entrez votre adresse.</span>
+					<span style="color:red" ng-show="myForm.address.$dirty">
+						<span ng-show="myForm.address.$error.required">L'adresse est nécessaire.</span>
+						<span ng-show="myForm.address.$error.pattern"></span>
+						
+					</span>
+					<span class="text-success" ng-show="myForm.address.$dirty && myForm.address.$valid ">Adresse correct.</span>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Ville :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="city" name="city" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<br>
+					<span ng-show="myForm.city.$pristine">Entrez votre ville en lettres alphabétiques.</span>
+					<span style="color:red" ng-show="myForm.city.$dirty">
+						<span ng-show="myForm.city.$error.required">La ville est requis.</span>
+						<span ng-show="myForm.city.$error.pattern">La ville ne peut pas contenir de chiffres.</span>
+						<span ng-show="myForm.city.$error.maxlength">La ville ne peut pas dépasser 25 lettres.</span>
+						<span ng-show="myForm.city.$error.minlength">La ville doit contenir au moins 2 lettres.</span>
+					</span>
+					<span class="text-success" ng-show="myForm.city.$dirty && myForm.city.$valid && !myForm.city.$error.minlength && !myForm.city.$error.maxlength">Ville correct.</span>
+					
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
+					<label class="form-control-label">Code Postal :</label>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
+				<input type="text" name="postal" ng-model="number" ng-pattern="onlyNumbers" ng-maxlength="5" ng-minlength="5" required format-phone id="number">
+				<br>	
+				<span ng-show="myForm.postal.$pristine">Exemple:75010</span>
+				<span style="color:red" ng-show="myForm.postal.$dirty ">
+					<span class="error" ng-show="myForm.postal.$error.required">Le code postal est requis.</span>
+					<span class="error" ng-show="myForm.postal.$error.pattern">Le code postal est invalide.</span>
+					<span class="error" ng-show="myForm.postal.$error.maxlength">Le code postal doit contenir 5 chiffres.</span>
+					<span ng-show="myForm.postal.$error.minlength">Le code postal ne peut pas contenir moins de 5 chiffres.</span>
+					
+					
+				</span>
+				<span class="text-success" ng-show="myForm.postal.$dirty && myForm.postal.$valid && !myForm.postal.$error.minlength && !myForm.postal.$error.maxlength">Code Postal correct.</span>
+
+				</div>
+			</div>
+
+			<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+			<a href="home.html">
+				<input type="submit" value="S'enregistrer"
+					ng-disabled="(myForm.mobile.$pristine || myForm.email.$pristine || myForm.user.$pristine) || (myForm.user.$dirty && myForm.user.$invalid )||  
+						(myForm.email.$dirty && myForm.email.$invalid) || (myForm.mobile.$dirty && myForm.mobile.$invalid) ||( myForm.comments.$pristine) "></a>
+			</div>
+			</div>
+			</form>
+
+</div>
+<footer class="container-fluid text-center ">
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-sm-4">
+				
+			</div>
+			<div class="col-sm-4">
+			
+				ECE Amazon<br>
+				37, quai de Grenelle
+				Paris 75015.
+				<a href="contactus.html">Nous contacter.</a>
+			
+			</div>
+		</div>
+	</div>
+</footer>
+</div>
+
+</body>
+</html>
+
