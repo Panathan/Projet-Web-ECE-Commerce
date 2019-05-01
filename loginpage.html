@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="style.css" rel="stylesheet" type="text/css">
   <script>
 		var app = angular.module('myApp', []);
 	app.controller('validateCtrl', function($scope) {
@@ -74,10 +78,44 @@ padding:25px;
   </style>
 </head>
 
+<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="home.html" style="color:#ccc"><span class="logo"><img src="logo.png" width="30" height="30"></span>ECE Amazon</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#" style="color:#ccc">Accueil</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#ccc">Livres <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sous type 1</a></li>
+								<li><a href="#">Sous type 2</a></li>
+								<li><a href="#">Sous type 3</a></li>
+							</ul>
+						</li>
+						<li><a href="#" style="color:#ccc">Musique</a></li>
+						<li><a href="#" style="color:#ccc">Vêtements</a></li>
+						<li><a href="#" style="color:#ccc">Sports et loisirs</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="userRegistration.html" style="color:#ccc"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+						<li><a href="loginpage.html" style="color:#ccc"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
 <div class="container" id="contactForm" name="contactForm">
 <h2>Bienvenue</h2>
 <h2>Page de connexion</h2>
-	<form class="form-inline" ng-app="myApp" ng-controller="validateCtrl" name="myForm" action="loginValid.php" method="post" novalidate>
+	<form class="form-inline" ng-app="myApp" ng-controller="validateCtrl" name="myForm" action="loginValid.php" method="POST" novalidate>
 			
 
 			<div class="row">
@@ -113,7 +151,7 @@ padding:25px;
 				<span class="text-success" ng-show="myForm.pwd.$dirty && myForm.pwd.$valid"></span>
 				</div>
 			</div>
-			
+			<br />
 			<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 text-center">
 				<input type="submit" value="Connexion"
@@ -133,16 +171,16 @@ padding:25px;
 				
 			</div>
 			<div class="col-sm-4">
-			
-				ECE Amazon<br>
-				37, quai de Grenelle
-				Paris 75015.
-				<a href="contactus.html">Nous contacter.</a>
-			
+			Pas encore de compte ? Créez en un nouveau ! 
+			<a href="userRegistration.html">S'inscrire.</a><br>
+			Retourner à la
+			<a href="home.html"> page d'accueil</a>
+			<br><br>ECE Amazon<br>
+			37, quai de Grenelle<br>
+			Paris 75015.
 			</div>
 		</div>
 	</div>
 </footer>
 </body>
 </html>
-
