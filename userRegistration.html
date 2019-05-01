@@ -81,7 +81,7 @@ padding:25px;
 					<label class="form-control-label">Nom :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="lastname" name="lastname" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<input type="text" placeholder="Votre nom" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="lastname" name="lastname" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
 					<br>
 					<span ng-show="myForm.lastname.$pristine">Entrez votre nom en lettres alphabétiques.</span>
 					<span style="color:red" ng-show="myForm.lastname.$dirty">
@@ -100,7 +100,7 @@ padding:25px;
 					<label class="form-control-label">Prénom :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="firstname" name="firstname" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<input type="text" placeholder="Votre prénom" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="firstname" name="firstname" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
 					<br>
 					<span ng-show="myForm.firstname.$pristine">Entrez votre prénom en lettres alphabétiques.</span>
 					<span style="color:red" ng-show="myForm.firstname.$dirty">
@@ -119,7 +119,7 @@ padding:25px;
 					<label class="form-control-label">Email :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
-				<input type="text" name="email" ng-model="email" ng-pattern="emailPattern" required>
+				<input type="text" placeholder="Votre email" name="email" ng-model="email" ng-pattern="emailPattern" required>
 				<br>	
 				<span ng-show="myForm.email.$pristine">Exemple:prenom.nom@edu.ece.fr</span>
 				<span style="color:red" ng-show="myForm.email.$dirty ">
@@ -134,17 +134,18 @@ padding:25px;
 				<div class="col-sm-5 col-md-5 col-lg-5 text-right">
 					<label class="form-control-label">Mot de passe :</label>
 				</div>
-				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="password" name="password" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
-					<br>
-					<span ng-show="myForm.password.$pristine">Entrez votre mot de passe.</span>
-					<span style="color:red" ng-show="myForm.password.$dirty">
-						<span ng-show="myForm.password.$error.required">Le mot de passe est requis.</span>
-						<span ng-show="myForm.password.$error.maxlength">Votre mot de passe ne peut pas dépasser 25 lettres.</span>
-						<span ng-show="myForm.password.$error.minlength">Votre mot de passe doit contenir au moins 2 lettres.</span>
-					</span>
-					<span class="text-success" ng-show="myForm.password.$dirty && !myForm.password.$error.minlength && !myForm.password.$error.maxlength">Mot de passe correct.</span>
-					
+				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
+				<input type="password" placeholder="Votre mot de passe" name="pwd" ng-model="pwd" ng-pattern="passwordPattern" ng-maxlength="25" ng-minlength="2" ng-pattern-restrict required>
+				<br>	
+				<span ng-show="myForm.pwd.$pristine">Exemple:MotDePasse</span>
+				<span style="color:red" ng-show="myForm.pwd.$dirty ">
+					<span ng-show="myForm.pwd.$error.required">Le mot de passe est requis.</span>
+					<span class="error" ng-show="myForm.pwd.$error.pattern">Mot de passe non valide.</span>
+					<span class="error" ng-show="myForm.pwd.$error.maxlength">Votre mot de passe ne doit pas dépasser 25 lettres.</span>
+					<span ng-show="myForm.pwd.$error.minlength">Votre mot de passe ne peut pas contenir moins de 2 lettres.</span>
+
+				</span>
+				<span class="text-success" ng-show="myForm.pwd.$dirty && myForm.pwd.$valid">Mot de passe</span>
 				</div>
 			</div>
 
@@ -153,7 +154,7 @@ padding:25px;
 					<label class="form-control-label">Numéro de téléphone :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-				<input type="text" name="mobile" ng-model="mobile" ng-pattern="onlyNumbers" ng-maxlength="10" ng-minlength="10" required format-phone id="mobile">
+				<input type="text" placeholder="Votre numéro de téléphone" name="mobile" ng-model="mobile" ng-pattern="onlyNumbers" ng-maxlength="10" ng-minlength="10" required format-phone id="mobile">
 				<br>	
 				<span ng-show="myForm.mobile.$pristine">Exemple:0654321234</span>
 				<span style="color:red" ng-show="myForm.mobile.$dirty ">
@@ -173,7 +174,7 @@ padding:25px;
 					<label class="form-control-label">Adresse :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-					<textarea ng-pattern ="/^[a-zA-Z0-9#\s]*$/" ng-model="address" name="address"   ng-pattern-restrict required></textarea>
+					<textarea ng-pattern ="/^[a-zA-Z0-9#\s]*$/" placeholder="Votre adresse" ng-model="address" name="address"   ng-pattern-restrict required></textarea>
 					<br>
 					<span ng-show="myForm.address.$pristine">Entrez votre adresse.</span>
 					<span style="color:red" ng-show="myForm.address.$dirty">
@@ -191,7 +192,7 @@ padding:25px;
 					<label class="form-control-label">Ville :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-					<input type="text" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="city" name="city" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
+					<input type="text" placeholder="Votre ville" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="city" name="city" ng-minlength="2" ng-maxlength="25"  ng-pattern-restrict required/>
 					<br>
 					<span ng-show="myForm.city.$pristine">Entrez votre ville en lettres alphabétiques.</span>
 					<span style="color:red" ng-show="myForm.city.$dirty">
@@ -210,7 +211,7 @@ padding:25px;
 					<label class="form-control-label">Code Postal :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left">
-				<input type="text" name="postal" ng-model="number" ng-pattern="onlyNumbers" ng-maxlength="5" ng-minlength="5" required format-phone id="number">
+				<input type="text" placeholder="Votre code postal" name="postal" ng-model="number" ng-pattern="onlyNumbers" ng-maxlength="5" ng-minlength="5" required format-phone id="number">
 				<br>	
 				<span ng-show="myForm.postal.$pristine">Exemple:75010</span>
 				<span style="color:red" ng-show="myForm.postal.$dirty ">

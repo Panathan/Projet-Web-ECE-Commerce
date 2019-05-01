@@ -85,7 +85,7 @@ padding:25px;
 					<label class="form-control-label">Email ID :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
-				<input type="text" name="email" ng-model="email" ng-pattern="emailPattern" required>
+				<input type="text" placeholder="Votre email" name="email" ng-model="email" ng-pattern="emailPattern" required>
 				<br>	
 				<span ng-show="myForm.email.$pristine">Exemple:prenom.nom@edu.ece.fr</span>
 				<span style="color:red" ng-show="myForm.email.$dirty ">
@@ -100,7 +100,7 @@ padding:25px;
 					<label class="form-control-label">Mot de passe :</label>
 				</div>
 				<div class="col-lg-7 col-md-7 col-sm-7 text-left" >
-				<input type="password" name="pwd" ng-model="pwd" ng-pattern="passwordPattern" ng-maxlength="25" ng-minlength="2" ng-pattern-restrict required>
+				<input type="password" placeholder="Votre mot de passe" name="pwd" ng-model="pwd" ng-pattern="passwordPattern" ng-maxlength="25" ng-minlength="2" ng-pattern-restrict required>
 				<br>	
 				<span ng-show="myForm.pwd.$pristine">Exemple:MotDePasse</span>
 				<span style="color:red" ng-show="myForm.pwd.$dirty ">
